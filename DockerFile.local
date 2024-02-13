@@ -1,0 +1,28 @@
+FROM --platform=linux/x86_64 python:3.7
+
+RUN mkdir -p /app/app
+RUN chmod -R a+rwx /app/app
+
+COPY . /app
+
+# RUN pip install -r /app/requirements.txt
+RUN apt-get update && apt-get install -y git
+
+RUN pip install tfx
+RUN pip install tensorflow
+
+
+# Install dependencies
+RUN pip install --upgrade pip
+RUN pip install apache-airflow
+RUN pip install dvc
+# RUN pip install feast # feast requires python > = 3.8
+RUN pip install matplotlib
+RUN pip install mlflow
+RUN pip install numpy
+RUN pip install pandas
+RUN pip install scikit-learn
+RUN pip install seaborn
+
+
+RUN pip install ipykernel
